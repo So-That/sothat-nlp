@@ -16,7 +16,5 @@ node_modules/
 
 # 데이터 폴더 (예: 민감한 데이터, 결과 파일 등)
 data/
-nlp/lib/python3.9/site-packages/
-node_modules/
-__pycache__/
-*.pyc
+
+nlp/
