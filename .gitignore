@@ -1,0 +1,22 @@
+# Python 관련
+__pycache__/
+*.pyc
+
+# 가상환경 / 라이브러리
+nlp/lib/python3.9/site-packages/
+
+# IDE / 개발 툴 설정
+.idea/
+
+# 노드 패키지 (혹시 프론트도 있다면)
+node_modules/
+
+# 로그 파일
+*.log
+
+# 데이터 폴더 (예: 민감한 데이터, 결과 파일 등)
+data/
+nlp/lib/python3.9/site-packages/
+node_modules/
+__pycache__/
+*.pyc
