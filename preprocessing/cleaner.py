@@ -1,30 +1,50 @@
+import os
 import json
 import re
-import html
+import MeCab
+import matplotlib.pyplot as plt
+# from sklearn.cluster import KMeans
+# from sklearn.decomposition import PCA
+# from sentence_transformers import SentenceTransformer
 
-# 텍스트 정제 함수
-def clean_text(text):
-    text = html.unescape(text)
-    text = re.sub(r'<.*?>', ' ', text)
-    text = re.sub(r'[\U00010000-\U0010ffff]', '', text)  # 이모지 제거
-    text = re.sub(r'[ㅋㅎㅠㅜ]{2,}', ' ', text)
-    text = re.sub(r'\.{2,}', '.', text)
-    text = re.sub(r'[^가-힣a-zA-Z0-9\s.,!?]', ' ', text)
-    text = re.sub(r'\s+', ' ', text).strip()
-    return text
+# 비속어 불러오기
+with open('data/badwords.txt', 'r', encoding='utf-8-sig') as f:
+    stopwords = set(f.read().split(","))
 
-# 경로 설정
-input_path = "/Users/jiyu/projects/sothat/sothat-nlp/data/response.json"
-output_path = "/Users/jiyu/projects/sothat/sothat-nlp/data/cleaned_response.json"
+# 형태소 분석기 초기화
+mecab = MeCab()
 
-# 파일 불러오기
+# 텍스트 전처리 함수
+def clean_and_tokenize(text):
+    text = re.sub(r"<.*?>", " ", text)  # HTML 태그 제거
+    text = re.sub(r"[^\w\s가-힣]", " ", text)  # 특수문자 제거
+    text = re.sub(r"\s+", " ", text)
+    text = re.sub(r"(ㅋ|ㅎ|ㅜ|ㅠ|ㄷ|ㅌ|ㄱ|ㅂ|ㅇ|ㄴ|ㅅ|ㅈ|ㅊ){1,}", " ", text)
+    tokens = mecab.morphs(text)
+    tokens = [t for t in tokens if t not in stopwords]
+    return " ".join(tokens)
+
+# 입력 파일 경로
+input_path = "data/test/건조기.json"
+
+# JSON 파일 로드
 with open(input_path, "r", encoding="utf-8") as f:
     data = json.load(f)
 
-# reply 필드 정제
-for item in data:
-    item['reply'] = clean_text(item['reply'])
+# 댓글 추출
+sentences = [item["reply"] for item in data if "reply" in item and isinstance(item["reply"], str)]
 
-# 정제된 결과 저장
+# 댓글 전처리
+processed_data = [{"reply": clean_and_tokenize(s)} for s in sentences]
+
+# 저장 경로 생성 (data/clean/건조기.json 형태)
+filename = os.path.basename(input_path)  # 건조기.json
+output_dir = "data/clean"
+os.makedirs(output_dir, exist_ok=True)
+output_path = os.path.join(output_dir, filename)
+
+# 저장
 with open(output_path, "w", encoding="utf-8") as f:
-    json.dump(data, f, ensure_ascii=False, indent=2)
+    json.dump(processed_data, f, ensure_ascii=False, indent=2)
+
+print(f"✅ 전처리된 데이터를 {output_path}에 저장했습니다.")

@@ -6,7 +6,7 @@ from umap import UMAP
 from collections import defaultdict
 
 # 1. 댓글 로딩
-with open("data/cleaned_response_600.json", "r", encoding="utf-8") as f:
+with open("data/clean/cleand_headphone.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 texts = [item["reply"] for item in data]
 
