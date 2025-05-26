@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6694f84d-1c32-4a14-b031-dca7df0b3201" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing/Konlpy_stopwords.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocessing/cleaner.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing/cleaner.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +15,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;zoo0o&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/So-That/sothat-nlp.git&quot;,
+    &quot;accountId&quot;: &quot;3cf3953a-a306-4dd4-98e5-0ec2bbe8df54&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -64,6 +74,9 @@
       <workItem from="1744173169043" duration="38000" />
       <workItem from="1744779228277" duration="675000" />
       <workItem from="1744782031243" duration="427000" />
+      <workItem from="1748261655467" duration="13000" />
+      <workItem from="1748264697825" duration="206000" />
+      <workItem from="1748268565860" duration="35000" />
     </task>
     <servers />
   </component>
